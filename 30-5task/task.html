@@ -9,29 +9,22 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
-  <body>
-  <?php 
-$serverame="localhost";
-$username="root";
-$password="";
-$dbname="task1";
-$conn=mysqli_connect($serverame,$username,$password,$dbname);
-$dsn = "mysql:host-$serverame;dbname-$dbname";
+  <body style="margin:20px;">
+    
+    <form action="task.php" method="post">
+      
+      <label>ID</label>
+      <input type="number" name="id" required><br><br>
 
-$pdo= new PDO($dsn,$username,$password);
-$id = $_POST['id'];
-$age  = $_POST['age'];
+      <label>name</label>
+      <input type="text" name="name" required><br><br>
 
-try{
-$sql="UPDATE `task1` SET `age` = $age  WHERE id = $id";
-$stat = $pdo->query($sql);
-  $result = array('status' => true, 'message' => ' Successfully');
-}
-catch (PDOException $e){
-    $result = array('status' => false, 'message' => 'Can\'t update');
-}
-echo json_encode($resultData);
-?>
+      <label>Age</label>
+      <input type="number" name="age" required><br><br>
+
+      <button type="submit">Update</button>
+  </form>
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
